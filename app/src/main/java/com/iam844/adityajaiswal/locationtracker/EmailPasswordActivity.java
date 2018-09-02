@@ -1,5 +1,6 @@
 package com.iam844.adityajaiswal.locationtracker;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -113,6 +114,8 @@ public class EmailPasswordActivity extends AppCompatActivity implements
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
+
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
