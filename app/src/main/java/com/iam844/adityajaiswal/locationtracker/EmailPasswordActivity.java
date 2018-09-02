@@ -1,5 +1,8 @@
+package com.iam844.adityajaiswal.locationtracker;
+
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -13,7 +16,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class EmailPasswordActivity extends BaseActivity implements
+public class EmailPasswordActivity extends AppCompatActivity implements
         View.OnClickListener {
 
     private static final String TAG = "EmailPassword";
@@ -65,7 +68,7 @@ public class EmailPasswordActivity extends BaseActivity implements
             return;
         }
 
-        showProgressDialog();
+//        showProgressDialog();
 
         // [START create_user_with_email]
         mAuth.createUserWithEmailAndPassword(email, password)
@@ -85,7 +88,7 @@ public class EmailPasswordActivity extends BaseActivity implements
                         }
 
                         // [START_EXCLUDE]
-                        hideProgressDialog();
+//                        hideProgressDialog();
                         // [END_EXCLUDE]
                     }
                 });
@@ -98,7 +101,7 @@ public class EmailPasswordActivity extends BaseActivity implements
             return;
         }
 
-        showProgressDialog();
+//        showProgressDialog();
 
         // [START sign_in_with_email]
         mAuth.signInWithEmailAndPassword(email, password)
@@ -113,8 +116,7 @@ public class EmailPasswordActivity extends BaseActivity implements
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(EmailPasswordActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EmailPasswordActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }
 
@@ -122,7 +124,7 @@ public class EmailPasswordActivity extends BaseActivity implements
                         if (!task.isSuccessful()) {
                             mStatusTextView.setText(R.string.auth_failed);
                         }
-                        hideProgressDialog();
+//                        hideProgressDialog();
                         // [END_EXCLUDE]
                     }
                 });
@@ -150,14 +152,10 @@ public class EmailPasswordActivity extends BaseActivity implements
                         findViewById(R.id.verify_email_button).setEnabled(true);
 
                         if (task.isSuccessful()) {
-                            Toast.makeText(EmailPasswordActivity.this,
-                                    "Verification email sent to " + user.getEmail(),
-                                    Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EmailPasswordActivity.this, "Verification email sent to " + user.getEmail(), Toast.LENGTH_SHORT).show();
                         } else {
                             Log.e(TAG, "sendEmailVerification", task.getException());
-                            Toast.makeText(EmailPasswordActivity.this,
-                                    "Failed to send verification email.",
-                                    Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EmailPasswordActivity.this, "Failed to send verification email.", Toast.LENGTH_SHORT).show();
                         }
                         // [END_EXCLUDE]
                     }
@@ -188,7 +186,7 @@ public class EmailPasswordActivity extends BaseActivity implements
     }
 
     private void updateUI(FirebaseUser user) {
-        hideProgressDialog();
+//        hideProgressDialog();
         if (user != null) {
             mStatusTextView.setText(getString(R.string.emailpassword_status_fmt,
                     user.getEmail(), user.isEmailVerified()));
